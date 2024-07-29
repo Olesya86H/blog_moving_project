@@ -352,10 +352,10 @@ def select_user_posts(session: Session, name_user: String, tag: String):
     if tag in user_post.description:
         print("Пост от {f} с тегом '{t}': ".format(f = name_user, t = tag), user_post.description)
 
-    len_user_post = 0
-    if tag in user_post.description:
-        len_user_post = len(user_post.description)
-        assert len_user_post > 0  #типа тест, в пакете testing компилятор отдельно не видит структуру классов из declarative_base, поэтому сюда вынесла
+    #len_user_post = 0
+    #if tag in user_post.description:
+        #len_user_post = len(user_post.description)
+        #assert len_user_post > 0  #типа тест, в пакете testing компилятор отдельно не видит структуру классов из declarative_base, поэтому сюда вынесла
 
 def get_post(session: Session, user_id) -> Agent | None:
     stmt = (
@@ -388,12 +388,12 @@ def get_conn_type_id_by_desc(session: Session, desc: str) -> Agent_Conn_Type | N
     return session.scalars(stmt).first()
 
 def main():
-    create_table()
+    #create_table()
 
     with Session(engine) as session:
-        insert_rows(session)
+        #insert_rows(session)
         select_user_posts(session, "Chipollino", "переезд")
-        select_user_posts(session, "Buratino", "кухня")
+        #select_user_posts(session, "Buratino", "кухня")
 
 if __name__ == "__main__":
     main()
